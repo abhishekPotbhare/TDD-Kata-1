@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
+	 public static int  counter=0;
 	public static int add(String string) {
 		int sum = 0;
+		++counter;
 		if (string.isEmpty()) {
 			return 0;
 		} else if (string.startsWith("//")) {
@@ -17,7 +19,7 @@ public class Calculator {
 			m.matches();
 			String delimiter = m.group(1);
 			String number = m.group(2);
-			String[] split = number.split(delimiter);
+			String[] split = number.split(  Pattern.quote( delimiter));
 			ArrayList<Integer> list = new ArrayList<Integer>();
 
 			for (String s : split) {
