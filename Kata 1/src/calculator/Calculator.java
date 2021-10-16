@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-	 public static int  counter=0;
+	
+
 	public static int add(String string) {
 		int sum = 0;
-		++counter;
+		
 		if (string.isEmpty()) {
 			return 0;
 		} else if (string.startsWith("//")) {
@@ -19,33 +20,44 @@ public class Calculator {
 			m.matches();
 			String delimiter = m.group(1);
 			String number = m.group(2);
-			String[] split = number.split(  Pattern.quote( delimiter));
+			String[] split = number.split(Pattern.quote(delimiter));
 			ArrayList<Integer> list = new ArrayList<Integer>();
 
 			for (String s : split) {
 				list.add(Integer.parseInt(s));
 			}
-			
-			 //filter(LessThan(0),list);
-			
-			List<Integer> collect = list.stream().filter(i -> i<0).collect(Collectors.toList());
 
-			   if(!collect.isEmpty()) {
-				   throw new RuntimeException("Negatives not allowed: "+collect.toString());
-			   }
-			   else {for (String s : split) {
-				sum += Integer.parseInt(s);
+			// filter(LessThan(0),list);
+
+			List<Integer> collect = list.stream().filter(i -> i < 0).collect(Collectors.toList());
+
+			if (!collect.isEmpty()) {
+				throw new RuntimeException("Negatives not allowed: " + collect.toString());
+			} else {
+
+//				   for (String s : split) {
+//				sum += Integer.parseInt(s);
+
+				for (Integer i : list) {
+					if (i <= 1000) {
+						sum += i;
+
+					}
+				}
+
+				return sum;
 			}
-
-			return sum;
-			   }
 		} else {
 
 			String[] split = string.split(",|\n");
 
 			for (String s : split) {
-				sum += Integer.parseInt(s);
+				int temp = Integer.parseInt(s);
+				if (temp <= 1000) {
+					sum = sum + temp;
+				}
 			}
+
 			return sum;
 
 		}
