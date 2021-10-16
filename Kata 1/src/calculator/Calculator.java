@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-	
+	public static int counter=0;
 
 	public static int add(String string) {
 		int sum = 0;
-		
+		  ++counter;
 		if (string.isEmpty()) {
 			return 0;
 		} else if (string.startsWith("//")) {

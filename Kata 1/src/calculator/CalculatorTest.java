@@ -58,14 +58,19 @@ public class CalculatorTest {
 
 	}
 	
-//	@Test
-//	public void testAddMethodEvokesCounter() {
-//		assertEquals(8, Calculator.counter);
-//	}
+	@Test
+	public void testAddMethodEvokesCounter() {
+		assertEquals(9, Calculator.counter);
+	}
 	
 	@Test
 	public void testNumbergreterThan1000Ignore() {
 		assertEquals(1,Calculator.add("1,1001"));
 	}
+	
+//	  @Test
+//	  public void testRegex() {
+//		  assertEquals(6, Calculator.add("//[***]\\n1***2***3"));
+//	  }
 
 }
