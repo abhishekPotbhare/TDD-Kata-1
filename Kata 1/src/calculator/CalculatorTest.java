@@ -7,43 +7,43 @@ import org.junit.Test;
 public class CalculatorTest {
 
 	@Test
-	public void testEmptyString() {
+	public void testEmptyString() throws Exception {
 		// fail("Not yet implemented");
 		assertEquals(0, Calculator.add(""));
 	}
 
 	@Test
-	public void testForSingleNumber() {
+	public void testForSingleNumber() throws Exception {
 		assertEquals(1, Calculator.add("1"));
 	}
 
 	@Test
-	public void testForTwoNumberReturnSum() {
+	public void testForTwoNumberReturnSum() throws Exception {
 		assertEquals(3, Calculator.add("1,2"));
 	}
 
 	@Test
-	public void testMultipleNumbers() {
+	public void testMultipleNumbers() throws Exception {
 		assertEquals(10, Calculator.add("1,2,3,4"));
 	}
 
 	@Test
-	public void testNewLineCharacter() {
+	public void testNewLineCharacter() throws Exception {
 		assertEquals(6, Calculator.add("1,2\n3"));
 	}
 
 	@Test
-	public void testAnyDelimiter() {
+	public void testAnyDelimiter() throws Exception {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 
 	@Test
-	public void testRegexExpression() {
+	public void testRegexExpression() throws Exception {
 
 		assertEquals(3, Calculator.add("//.\n1.2"));
 	}
 
-	@Test()
+	@Test
 	public void testRaiseExceptionOnNegativeNumber() {
 
 		try {
@@ -64,13 +64,10 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void testNumbergreterThan1000Ignore() {
+	public void testNumbergreterThan1000Ignore() throws Exception {
 		assertEquals(1,Calculator.add("1,1001"));
 	}
 	
-//	  @Test
-//	  public void testRegex() {
-//		  assertEquals(6, Calculator.add("//[***]\\n1***2***3"));
-//	  }
+
 
 }

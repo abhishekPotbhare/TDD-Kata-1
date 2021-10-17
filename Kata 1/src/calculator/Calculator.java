@@ -8,15 +8,17 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-	public static int counter=0;
+	public static int counter = 0;
 
-	public static int add(String string) {
+	public static int add(String string) throws Exception {
 		int sum = 0;
-		  ++counter;
+		++counter;
 		if (string.isEmpty()) {
 			return 0;
 		} else if (string.startsWith("//")) {
+
 			Matcher m = Pattern.compile("//(.)\n(.*)").matcher(string);
+
 			m.matches();
 			String delimiter = m.group(1);
 			String number = m.group(2);
@@ -27,16 +29,11 @@ public class Calculator {
 				list.add(Integer.parseInt(s));
 			}
 
-			// filter(LessThan(0),list);
-
 			List<Integer> collect = list.stream().filter(i -> i < 0).collect(Collectors.toList());
 
 			if (!collect.isEmpty()) {
-				throw new RuntimeException("Negatives not allowed: " + collect.toString());
+				throw new Exception("Negatives not allowed: " + collect.toString());
 			} else {
-
-//				   for (String s : split) {
-//				sum += Integer.parseInt(s);
 
 				for (Integer i : list) {
 					if (i <= 1000) {
@@ -47,7 +44,10 @@ public class Calculator {
 
 				return sum;
 			}
-		} else {
+
+		}
+
+		else {
 
 			String[] split = string.split(",|\n");
 
